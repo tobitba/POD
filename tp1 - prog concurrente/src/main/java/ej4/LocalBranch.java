@@ -12,9 +12,13 @@ public class LocalBranch {
     private static Integer AMOUNT_OF_ATTENDANTS_NORMAL = 2;
 
 
-    private void shutdown(ExecutorService executor) throws InterruptedException {
+    private static void shutdown(ExecutorService executor) {
         executor.shutdown();
-        if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+        try {
+            if (!executor.awaitTermination(800, TimeUnit.SECONDS)) {
+                executor.shutdownNow();
+            }
+        }catch (InterruptedException e) {
             executor.shutdownNow();
         }
     }
@@ -38,6 +42,11 @@ public class LocalBranch {
         for (int i = 0; i < AMOUNT_OF_ATTENDANTS_NORMAL; i++) {
             normal.submit(new ClientAttendant(service,ClientPriority.NORMAL));
         }
+
+        shutdown(receptionists);
+        shutdown(high);
+        shutdown(priority);
+        shutdown(normal);
 
 
 

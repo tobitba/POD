@@ -18,17 +18,17 @@ public class ClientAttendant implements Callable<Integer > {
         //boolean stillWorking = true;
         AtomicInteger clientsServed = new AtomicInteger();
         AtomicInteger cyclesWithNoClients = new AtomicInteger();
-        while (/*stillWorking && */cyclesWithNoClients.get() < 6546868) { //if 3 cycles with no client end.
+        while (/*stillWorking && */cyclesWithNoClients.get() < 10) { //if 3 cycles with no client end.
 //get one client and sleep for random amount of seconds to
             //simulate service time
 // or if no client sleep to simulate waiting time.
             Optional.ofNullable(clientService.clientForPriority(priority)).ifPresentOrElse( client -> {
                 System.out.println("Attendant #" + Thread.currentThread().threadId() + "prioridad" + priority + ":Atendiendo  " + client.toString() + "priority" + client.priority());
                 clientsServed.getAndIncrement();
-                System.out.println("Attendant #" + Thread.currentThread().getId() + ":Despachado  " + client.toString() + "priority" + client.priority());
+                System.out.println("Attendant #" + Thread.currentThread().threadId() + ":Despachado  " + client.toString() + "priority" + client.priority());
                 cyclesWithNoClients.set(0);
                 } , cyclesWithNoClients::getAndIncrement);
-            Thread.sleep(ThreadLocalRandom.current().nextInt(2000, 5000));
+            Thread.sleep(ThreadLocalRandom.current().nextInt(200, 500));
         }
         return clientsServed.get(); // how many clients
     }

@@ -20,7 +20,7 @@ public class Receptionist implements Callable<Integer > {
             //inserrto en queue
             clientService.receiveClient(client);
             System.out.println("Receptionist #" + Thread.currentThread().getId() + ":Despachado  " + client.toString() );
-            Thread.sleep(ThreadLocalRandom.current().nextInt(1000,5000));
+            Thread.sleep(ThreadLocalRandom.current().nextInt(1,5));
         }
         return AMOUNT_OF_CLIENTS;
     }
