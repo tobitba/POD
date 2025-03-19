@@ -31,3 +31,14 @@ public class ej1 {
         }
     }
 }
+//todo: PREGUNTAR SI ESTA BIEN
+/*
+AB12
+12AB
+A12B
+1A2B
+...
+
+
+
+ */
