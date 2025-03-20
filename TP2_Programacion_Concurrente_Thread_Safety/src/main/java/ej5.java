@@ -1,12 +1,20 @@
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+
+/*
+   CORRECION CATEDRA:
+   esta bien perooo el que esta en las soluciones en campus es mejor porque al usar los resultados de los Future con .get
+   el thread principal es el unico que hace la suma en la variable final. En mi version al usar el AtomicLong todos los threads van a querer
+   acceder a esa variable lo que hace que este programa se bloquee mas que el de la catedra, ya que al usar Futures cada thread corre, genera
+   su resultado y listo, el unico thread que se bloquea (sin contar bloqueos del so y demas) es el principal al esperar a que termine cada thread
+*
+*  */
+
 
 public class ej5 {
 
@@ -46,19 +54,5 @@ public class ej5 {
     }
 
 
-    private static void viewDirectory(Path path, ExecutorService executor) {
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)){
-            for (Path archivo : stream) {
-                File file =  archivo.toFile();
-                if(file.isDirectory()){
-                    System.out.printf("Directorio: %s%n", file.getName());
-                }else {
-                    System.out.printf("Archivo: %s%n", file.getName());
-                }
-            }
-        } catch (Exception e) {
-            System.err.print("Error al ver el Path");
-        }
-    }
 
 }
