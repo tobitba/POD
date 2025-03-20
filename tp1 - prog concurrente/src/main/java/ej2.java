@@ -21,7 +21,7 @@ public class ej2 {
         Thread.sleep(2000);
         System.out.printf("Thread state: %s%n", thread.getState());
         synchronized (lock) {
-            lock.notifyAll(); //TODO: PORQUE PUEDO ENTRAR ACA, SI EL LOCK LO TIENE EL OTRO THREAD ______________________________________________________________________
+            lock.notifyAll(); //TODO
         }
         thread.join();
         System.out.printf("Thread state: %s%n", thread.getState());

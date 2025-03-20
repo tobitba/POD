@@ -2,6 +2,23 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/*
+*   RESPUESTA VERIFICADA POR CATEDRA
+*   Se imprimen todas las permutaciones de A,B,1 y 2 posibles excepto las que tengan a B antes que A y/o 2 antes de 1
+*   (es imposible que primero se imprima B antes que A)
+* posibles combinaciones:
+* AB12
+* A12B
+* 12AB
+* A1B2
+* ...
+*
+* */
+
+
+
+
+
 public class ej1 {
     public static class T1 implements Runnable {
         @Override
@@ -31,14 +48,3 @@ public class ej1 {
         }
     }
 }
-//todo: PREGUNTAR SI ESTA BIEN
-/*
-AB12
-12AB
-A12B
-1A2B
-...
-
-
-
- */

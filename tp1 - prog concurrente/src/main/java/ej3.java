@@ -5,6 +5,16 @@ import java.util.stream.IntStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+/*
+* NOTAS:
+* CachedThreadPool : pool de threads que crea unthread nuevo a medida que llegan tareas, a menos que exista un thread idle donde
+* en ese caso se reutiliza
+*FixedThreadPool : pool de n threads
+* SingleThreadExecutor: pool de 1 thread
+* ThreadPoolExecutor : me permite configurar el pool a medida, pasando como argumento la cantidad de threads maximos,
+* que pasa si se tienen mas tareas que threads (en este ejecicio aborta con una excepcion)
+* */
+
 
 public class ej3 {
     private static final Logger logger =            LoggerFactory.getLogger(ej3.class);
@@ -44,6 +54,6 @@ public class ej3 {
                 TimeUnit.MILLISECONDS,
                 new SynchronousQueue<>(),
                 new ThreadPoolExecutor.AbortPolicy());
-        execute(executor);    //TODO: QUE HACE ESTE ULTIMO Y PORQUE ME RECHAZA
+        execute(executor);    //este ultimo
     }
 }
