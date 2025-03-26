@@ -21,7 +21,7 @@ public class ej2 {
         Thread.sleep(2000);
         System.out.printf("Thread state: %s%n", thread.getState());
         synchronized (lock) {
-            lock.notifyAll(); //TODO
+            lock.notifyAll(); //TODO : vovler a preguntar :(
         }
         thread.join();
         System.out.printf("Thread state: %s%n", thread.getState());

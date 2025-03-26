@@ -54,6 +54,6 @@ public class ej3 {
                 TimeUnit.MILLISECONDS,
                 new SynchronousQueue<>(),
                 new ThreadPoolExecutor.AbortPolicy());
-        execute(executor);    //este ultimo
+        execute(executor);
     }
 }
