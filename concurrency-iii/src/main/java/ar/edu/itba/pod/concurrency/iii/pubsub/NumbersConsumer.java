@@ -5,7 +5,6 @@ import java.util.concurrent.BlockingQueue;
 public class NumbersConsumer implements Runnable {
     private BlockingQueue<Integer> queue;
     private final int poisonPill;
-    private int sum = 0;
 
     public NumbersConsumer(BlockingQueue<Integer> queue, int poisonPill) {
         this.queue = queue;
@@ -13,15 +12,16 @@ public class NumbersConsumer implements Runnable {
     }
 
     public void run() {
+        int sum = 0;
         try {
             while (true) {
                 Integer number = queue.take();
                 if (number.equals(poisonPill)) {
-                    System.out.println("NUMEROOOO SUMA" + sum);
+                    System.out.println(Thread.currentThread().getName() + " sum result: " + sum);
                     return;
                 }
-                sum += 1;
-                System.out.println(Thread.currentThread().getName() + " result: " + number);
+                sum += number;
+                //System.out.println(Thread.currentThread().getName() + " result: " + number);
             }
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

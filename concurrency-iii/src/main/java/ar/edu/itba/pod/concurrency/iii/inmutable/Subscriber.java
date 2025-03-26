@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Subscriber {
-    private  Integer id;
-    private  String fullName;
-    private  Date dateOfBirth;
-    private  List<Subscription> subscriptions;
+    private final Integer id;
+    private final String fullName;
+    private final Date dateOfBirth;
+    private final List<Subscription> subscriptions;
 
     public Subscriber(Integer id, String fullName, Date dateOfBirth,  List<Subscription> subscriptions) {
         this.id = id;
@@ -25,10 +25,10 @@ public class Subscriber {
     }
 
     public Date getDateOfBirth() {
-        return dateOfBirth;
+        return new Date(dateOfBirth.getTime());
     }
 
     public List<Subscription> getSubscriptions() {
         return subscriptions;
-    }
+    } //TODO: preguntar como hacia con la lista xd
 }
