@@ -1,6 +1,7 @@
 package ar.edu.itba.pod.concurrency.iii.inmutable;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Subscriber {
@@ -29,6 +30,6 @@ public class Subscriber {
     }
 
     public List<Subscription> getSubscriptions() {
-        return subscriptions;
-    } //TODO: preguntar como hacia con la lista xd
+        return new LinkedList<>(subscriptions);
+    } //TODO: preguntar como hacia con la lista xd esto no esta copado creo
 }
