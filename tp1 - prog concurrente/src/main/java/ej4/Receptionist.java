@@ -16,10 +16,10 @@ public class Receptionist implements Callable<Integer > {
 // sleep for a couple of random seconds.
             //creo un client con una prioridad aleatoria
             Client client = new Client("Cliente %d".formatted(i), ClientPriority.values()[ThreadLocalRandom.current().nextInt(0, 3)]);
-            System.out.println("Receptionist #" + Thread.currentThread().getId() + ":Comenzando  " + client.toString() );
-            //inserrto en queue
+            System.out.println("Receptionist #" + Thread.currentThread().getId() + ":Comenzando  " + client);
+            //insert en queue
             clientService.receiveClient(client);
-            System.out.println("Receptionist #" + Thread.currentThread().getId() + ":Despachado  " + client.toString() );
+            System.out.println("Receptionist #" + Thread.currentThread().getId() + ":Despachado  " + client);
             Thread.sleep(ThreadLocalRandom.current().nextInt(1,5));
         }
         return AMOUNT_OF_CLIENTS;

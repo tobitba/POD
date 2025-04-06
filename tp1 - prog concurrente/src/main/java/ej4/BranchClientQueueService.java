@@ -5,8 +5,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BranchClientQueueService implements IBranchClientQueueService{
-    private final EnumMap<ClientPriority, Queue<Client>> clientQueues = new EnumMap<>(ClientPriority.class);  //TODO: ver porque enummap no castea a map
-    //TODO: preguntar tema final
+    private final EnumMap<ClientPriority, Queue<Client>> clientQueues = new EnumMap<>(ClientPriority.class);
+
 
     public BranchClientQueueService() {
         for(ClientPriority priority : ClientPriority.values()) {
