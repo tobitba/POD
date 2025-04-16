@@ -5,7 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-
+/*La idea del Ej2 es implementar en el server todos los servicios del GenericService
+* Para eso deberíamos analizar el request del cliente y ver que comando quiere ejecutar
+* podríamos usar una máquina de estados
+* No lo voy a hacer xd... (no lo hicimos en clase igual)*/
     public class GenericSocketClient {
 
         private Socket clientSocket;
