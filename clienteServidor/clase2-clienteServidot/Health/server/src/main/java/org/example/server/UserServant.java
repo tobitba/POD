@@ -1,9 +1,6 @@
 package org.example.server;
 
-import ar.edu.itba.pod.grpc.user.LoginInformation;
-import ar.edu.itba.pod.grpc.user.User;
-import ar.edu.itba.pod.grpc.user.UserRoles;
-import ar.edu.itba.pod.grpc.user.UserServiceGrpc;
+import ar.edu.itba.pod.grpc.user.*;
 import com.google.protobuf.BoolValue;
 import io.grpc.stub.StreamObserver;
 
@@ -12,6 +9,18 @@ import java.util.*;
 public class UserServant extends UserServiceGrpc.UserServiceImplBase {
 
     private final Map<String,User> pepes = new HashMap<>();
+    private final UserRoles roles;
+
+    public UserServant(){
+        UserRoles.Builder rolesBuilder = UserRoles.newBuilder();
+        for(Role role : Role.values()){
+            if(role != Role.UNRECOGNIZED) {
+
+            rolesBuilder.putRolesBySite(role.name(),role);
+            }
+        }
+        roles = rolesBuilder.build();
+    }
 
     private static class UserPepes {
         private final User user;
@@ -44,7 +53,7 @@ public class UserServant extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void getRoles(User request, StreamObserver<UserRoles> responseObserver) {
-        responseObserver.onNext(UserRoles.newBuilder().build());   //TODO: como lo creo
+        responseObserver.onNext(roles);   //TODO: como lo creo
         responseObserver.onCompleted();
     }
 }
