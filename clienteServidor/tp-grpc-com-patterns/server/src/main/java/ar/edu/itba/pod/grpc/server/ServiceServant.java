@@ -28,9 +28,9 @@ public class ServiceServant extends ServiceGrpc.ServiceImplBase {
 
     @Override
     public void time(Empty request, StreamObserver<StringValue> responseObserver) {
-        responseObserver.onNext(StringValue.newBuilder().setValue(String.valueOf(LocalDateTime.now())).build());
-        //TODO preguntar si esta bien la siguiente linea:
-        //responseObserver.onNext(StringValue.of(String.valueOf(System.currentTimeMillis())));
+        responseObserver.onNext(StringValue.of(String.valueOf(LocalDateTime.now())).build());
+//En las respuestas ponen que retorna un entero asi:
+//responseObserver.onNext(UInt32Value.of(LocalDateTime.now().getHour()));
         responseObserver.onCompleted();
     }
 
@@ -42,13 +42,13 @@ public class ServiceServant extends ServiceGrpc.ServiceImplBase {
 
     @Override
     public void hello(StringValue request, StreamObserver<StringValue> responseObserver) {
-        responseObserver.onNext(StringValue.of("Hello " + request.getValue()));
+        responseObserver.onNext(StringValue.of("Hello " + request.getValue())); //TODO: preguntar tema formatted de la respuesta
         responseObserver.onCompleted();
     }
 
     @Override
     public void fortune(Empty request, StreamObserver<StringValue> responseObserver) {
-        responseObserver.onNext(StringValue.of(fortunes.get(random.nextInt(0,fortunes.size()))));
+        responseObserver.onNext(StringValue.of(fortunes.get(random.nextInt(0,fortunes.size())))); //TODO: preguntar por la clase SecureRandom de la respuesta y ver tema sincronizacion de los servants
         responseObserver.onCompleted();
     }
 }
