@@ -53,7 +53,7 @@ public class UserServant extends UserServiceGrpc.UserServiceImplBase {
 
     @Override
     public void getRoles(User request, StreamObserver<UserRoles> responseObserver) {
-        responseObserver.onNext(roles);   //TODO: como lo creo
+        responseObserver.onNext(roles);   //ESTA MAL!!! el user deberia tener un rol y deberia devolver eso... NO la lista de posibles roles del servicio.
         responseObserver.onCompleted();
     }
 }

@@ -45,7 +45,7 @@ public class Client {
             System.out.println(stub.getRoles(ar.edu.itba.pod.grpc.user.User.newBuilder().build()));*/
 
             //UserService Future Stub
-          /*  ExecutorService executorService = Executors.newFixedThreadPool(10);
+          /* ExecutorService executorService = Executors.newFixedThreadPool(10);
             UserServiceGrpc.UserServiceFutureStub futureStub = UserServiceGrpc.newFutureStub(channel);
             ListenableFuture<UserRoles> future =  futureStub.getRoles(User.newBuilder().build());
             Futures.addCallback(future, new FutureCallback<UserRoles>() {
@@ -59,7 +59,11 @@ public class Client {
                     System.err.println("Error: " + throwable.getMessage());
                 }
             }, executorService);
-            executorService.awaitTermination(100, TimeUnit.SECONDS);//TODO: esta ok esto?*/
+            try {
+                future.get();
+            } catch (Exception ignored) {}
+            executorService.awaitTermination(100, TimeUnit.SECONDS);*/
+
 
             //UserService Async Stub
             UserServiceGrpc.UserServiceStub asyncStub = UserServiceGrpc.newStub(channel);
@@ -67,6 +71,7 @@ public class Client {
                 @Override
                 public void onNext(UserRoles value) {
                     System.out.println(value.getRolesBySiteMap());  //TODO: noo imprime nada :(
+                    System.out.println("ASYNC");
                 }
                 @Override
                 public void onError(Throwable t) {
@@ -77,6 +82,7 @@ public class Client {
                     System.out.println("Completed");
                 }
             });
+            Thread.sleep(1000); //TODO: si agrego esto se imprime y ademas aparce un "Completed"
         } finally {
             channel.shutdown().awaitTermination(10, TimeUnit.SECONDS);
         }
