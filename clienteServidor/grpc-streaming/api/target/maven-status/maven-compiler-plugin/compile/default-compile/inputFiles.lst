@@ -1,0 +1,11 @@
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/grpc-java/ar/edu/itba/pod/grpc/trainTickets/TrainTicketServiceGrpc.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/Destinations.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/Reservation.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/TicketOrBuilder.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/TrainOrBuilder.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/TrainTicketServiceModel.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/ReservationOrBuilder.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/DestinationsOrBuilder.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/Service.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/Train.java
+/home/tobias/Documentos/pod/clienteServidor/grpc-streaming/api/target/generated-sources/protobuf/java/ar/edu/itba/pod/grpc/trainTickets/Ticket.java
