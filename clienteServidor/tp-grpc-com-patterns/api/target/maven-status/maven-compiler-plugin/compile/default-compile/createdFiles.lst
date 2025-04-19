@@ -1,0 +1,14 @@
+ar/edu/itba/pod/grpc/ServiceGrpc$AsyncService.class
+ar/edu/itba/pod/grpc/ServiceGrpc$MethodHandlers.class
+ar/edu/itba/pod/grpc/ServiceGrpc$1.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceBlockingStub.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceStub.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceImplBase.class
+ar/edu/itba/pod/grpc/ServiceGrpc$2.class
+ar/edu/itba/pod/grpc/ServiceGrpc.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceMethodDescriptorSupplier.class
+ar/edu/itba/pod/grpc/ServiceModel.class
+ar/edu/itba/pod/grpc/ServiceGrpc$3.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceFutureStub.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceBaseDescriptorSupplier.class
+ar/edu/itba/pod/grpc/ServiceGrpc$ServiceFileDescriptorSupplier.class
