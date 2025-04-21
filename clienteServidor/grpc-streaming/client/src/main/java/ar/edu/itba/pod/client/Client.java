@@ -30,7 +30,7 @@ public class Client {
         logger.info("grpc-streaming Client Starting ...");
         logger.info("grpc-com-patterns Client Starting ...");
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
-                .usePlaintext()
+                .usePlaintext().intercept(new TicketClientLoggerInterceptor())
                 .build();
 
         try {
