@@ -21,7 +21,7 @@ public class PubSubTest {
     @Test
     public final void test_blocking_queue_test() throws InterruptedException {
         final BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(BOUND);
-
+        System.out.println("System processors: " + N_CONSUMERS);
         final ExecutorService executorService = Executors.newCachedThreadPool();
         try {
             for (int i = 1; i < N_PRODUCERS; i++) {

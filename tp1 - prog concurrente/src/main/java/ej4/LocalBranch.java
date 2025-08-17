@@ -1,8 +1,8 @@
 package ej4;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class LocalBranch {
     private static Integer AMOUNT_OF_CLIENTS = 200;
@@ -24,23 +24,28 @@ public class LocalBranch {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService receptionists = Executors.newFixedThreadPool(AMOUNT_OF_RECEPTIONIST);
         ExecutorService high = Executors.newFixedThreadPool(AMOUNT_OF_ATTENDANTS_HIGH);
         ExecutorService priority = Executors.newFixedThreadPool(AMOUNT_OF_ATTENDANTS_PRIORITY);
         ExecutorService normal = Executors.newFixedThreadPool(AMOUNT_OF_ATTENDANTS_NORMAL);
+        List<Future<Integer>> attendants = new ArrayList<>();
         IBranchClientQueueService service = new BranchClientQueueService();
         for (int i = 0; i < AMOUNT_OF_RECEPTIONIST; i++) {
             receptionists.submit(new Receptionist(service));
         }
         for (int i = 0; i < AMOUNT_OF_ATTENDANTS_HIGH; i++) {
-            high.submit(new ClientAttendant(service,ClientPriority.HIGH));
+            attendants.add( high.submit(new ClientAttendant(service,ClientPriority.HIGH)));
         }
         for (int i = 0; i < AMOUNT_OF_ATTENDANTS_PRIORITY; i++) {
-            priority.submit(new ClientAttendant(service,ClientPriority.PRIORITY));
+            attendants.add( priority.submit(new ClientAttendant(service,ClientPriority.PRIORITY)));
         }
         for (int i = 0; i < AMOUNT_OF_ATTENDANTS_NORMAL; i++) {
-            normal.submit(new ClientAttendant(service,ClientPriority.NORMAL));
+            attendants.add( normal.submit(new ClientAttendant(service,ClientPriority.NORMAL)));
+        }
+
+        for(Future<Integer> attendant : attendants){
+            System.out.println(attendant.get());
         }
 
         shutdown(receptionists);

@@ -9,7 +9,7 @@ public class PromotionSender {
         List<String> promotions = Arrays.asList("Descuento en Café: ",
                 "Descuento en Refrescos: ",
                 "Descuento en Congelados: ");
-        notifyPromotionsParallel(promotions);
+        notify1B(promotions);
         System.out.println("Se realizaron todas las notificaciones de la promoción.");
     }
     private static void notifyCustomers(String promotion) {
@@ -63,5 +63,21 @@ public class PromotionSender {
             });
         }
         notifyMarketing("Hoy se publicitó un descuento del 30%");
+    }
+
+    private static void notify1B(List<String> promotions){
+        CompletableFuture<Void> cp = CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        promotions.forEach(promo -> cp.thenRunAsync(() -> notifyCustomers(promo + "30%" + "Sólo por hoy")));
+        cp.completeAsync(() -> {notifyMarketing("Hoy se publicitó un descuento del 30%"); return null;} );
+        System.out.println(cp.state());
+        try {
+            cp.get();
+        }catch (Exception ignored){}
     }
 }
